@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Web Scanner Pro</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f8f9fc;
+    --surface: #ffffff;
+    --surface2: #f2f4f8;
+    --border: #e4e8f0;
+    --text: #0f1117;
+    --text-muted: #5a6275;
+    --text-dim: #9ba3b5;
+    --accent: #4f46e5;
+    --accent-light: #eef2ff;
+    --accent2: #0ea5e9;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --radius: 14px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    background: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .app-badge span { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; display: inline-block; }
+  .top-bar h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+  .top-bar .subtitle {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+
+  /* META PILLS */
+  .meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.5rem 1.5rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .pill.green { background: var(--green-light); border-color: #a7f3d0; color: #047857; }
+  .pill.blue { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+
+  /* HIGHLIGHT BANNER */
+  .highlight-banner {
+    background: var(--green-light);
+    border: 1px solid #a7f3d0;
+    border-radius: var(--radius);
+    padding: 1.1rem 1.3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .highlight-banner .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .highlight-banner p { font-size: 0.88rem; color: #065f46; line-height: 1.55; font-weight: 500; }
+  .highlight-banner p strong { font-weight: 700; }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow);
+  }
+  .toc h3 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+  .toc ol {
+    padding-left: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2rem 1.5rem;
+  }
+  .toc li { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .toc a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* SECTIONS */
+  .policy-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.8rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow);
+    scroll-margin-top: 1.5rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .policy-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .policy-section p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .policy-section p:last-child { margin-bottom: 0; }
+  .policy-section strong { color: var(--text); font-weight: 600; }
+  .policy-section a { color: var(--accent); text-decoration: none; }
+  .policy-section a:hover { text-decoration: underline; }
+
+  /* LISTS */
+  .check-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .check-list li::before {
+    content: '✓';
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .check-list li strong { color: var(--text); font-weight: 600; }
+
+  /* PERMISSION TABLE */
+  .perm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .perm-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 0.9rem 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .perm-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .perm-item h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .perm-item p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 !important;
+    line-height: 1.55;
+  }
+
+  /* FIREBASE CARD */
+  .firebase-card {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    margin-top: 1rem;
+  }
+  .firebase-card p {
+    font-size: 0.84rem !important;
+    color: #78350f !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+  }
+  .firebase-card a { color: #b45309 !important; font-weight: 600; }
+
+  /* INFO BOX */
+  .info-box {
+    background: var(--accent-light);
+    border: 1px solid #c7d2fe;
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.9rem;
+  }
+  .info-box p {
+    font-size: 0.84rem !important;
+    color: #3730a3 !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  /* CONTACT CARD */
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-card:hover { border-color: var(--accent); background: var(--accent-light); }
+  .contact-card .contact-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-card span { font-size: 0.88rem; font-weight: 700; color: var(--text); display: block; }
+  .contact-card small { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .footer p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.7; }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 520px) {
+    .toc ol { grid-template-columns: 1fr; }
+    .policy-section { padding: 1.4rem 1.2rem; }
+    .top-bar { padding: 2.5rem 1.2rem 2rem; }
+    .meta-strip { gap: 0.4rem; }
+    .pill { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="app-badge"><span></span> Active Policy</div>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">Web Scanner Pro &mdash; by Vivek Gaikwad / Rise of Rebels</p>
+</div>
+
+<!-- META PILLS -->
+<div class="meta-strip">
+  <div class="pill blue">📅 Effective: June 1, 2025</div>
+  <div class="pill green">📴 100% Offline Processing</div>
+  <div class="pill green">🚫 No Ads</div>
+  <div class="pill green">👤 No Accounts Required</div>
+  <div class="pill green">🔒 No Personal Data Collected</div>
+</div>
+
+<div class="main">
+
+  <!-- HIGHLIGHT -->
+  <div class="highlight-banner">
+    <div class="icon">🛡️</div>
+    <p><strong>Your files never leave your device.</strong> Web Scanner Pro processes all documents entirely on-device using on-device ML. No files, images, or scanned documents are ever uploaded to any server.</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">Introduction</a></li>
+      <li><a href="#s2">Information We Collect</a></li>
+      <li><a href="#s3">How We Use Information</a></li>
+      <li><a href="#s4">Third-Party Services</a></li>
+      <li><a href="#s5">Permissions</a></li>
+      <li><a href="#s6">Data Storage & Security</a></li>
+      <li><a href="#s7">Children's Privacy</a></li>
+      <li><a href="#s8">Changes to This Policy</a></li>
+      <li><a href="#s9">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. INTRODUCTION -->
+  <div class="policy-section" id="s1">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <h2>Introduction</h2>
+    </div>
+    <p>This Privacy Policy describes how <strong>Vivek Gaikwad</strong> ("we", "us", or "our"), operating under the brand <strong>Rise of Rebels</strong>, handles information in connection with the <strong>Web Scanner Pro</strong> Android application ("the App").</p>
+    <p>We are committed to protecting your privacy. Web Scanner Pro is designed from the ground up to respect your data — all document processing happens entirely on your device, and the App does not collect, store, or transmit any personally identifiable information.</p>
+    <p>By using Web Scanner Pro, you agree to the practices described in this policy.</p>
+  </div>
+
+  <!-- 2. INFORMATION WE COLLECT -->
+  <div class="policy-section" id="s2">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <h2>Information We Collect</h2>
+    </div>
+    <p>Web Scanner Pro does <strong>not</strong> collect any personally identifiable information. The following summarises exactly what data the App does and does not interact with:</p>
+
+    <ul class="check-list" style="margin-top:1rem;">
+      <li><strong>No personal data collected</strong> — the App does not collect your name, email, phone number, or any personal identifier.</li>
+      <li><strong>No account or registration</strong> — you can use the App fully without creating an account or signing in.</li>
+      <li><strong>No file uploads</strong> — documents, images, and PDFs you scan are never sent to any server. All processing is performed locally on your device.</li>
+      <li><strong>Crash reports (anonymous)</strong> — if the App crashes, Firebase Crashlytics sends an anonymised crash report (device model, OS version, stack trace). No PII is included.</li>
+      <li><strong>Anonymous usage analytics</strong> — Firebase Analytics collects anonymous usage events (e.g. which features are used, session length) to help improve the App. No PII is collected or linked.</li>
+      <li><strong>App version check</strong> — Firebase Remote Config is used solely to fetch the latest app version number for update notifications. No personal data is involved.</li>
+    </ul>
+  </div>
+
+  <!-- 3. HOW WE USE INFORMATION -->
+  <div class="policy-section" id="s3">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <h2>How We Use Information</h2>
+    </div>
+    <p>The limited, anonymised data we receive is used exclusively for the following purposes:</p>
+    <ul class="check-list" style="margin-top:0.5rem;">
+      <li>Diagnosing and fixing technical issues and app crashes</li>
+      <li>Understanding which features are most useful to improve the App</li>
+      <li>Delivering app update notifications via Remote Config</li>
+      <li>Ensuring continued compatibility with new Android versions and devices</li>
+    </ul>
+    <div class="info-box">
+      <p>We do <strong>not</strong> use your data for advertising, profiling, or share it with any third party beyond the Firebase services described in Section 4.</p>
+    </div>
+  </div>
+
+  <!-- 4. THIRD-PARTY SERVICES -->
+  <div class="policy-section" id="s4">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <h2>Third-Party Services (Firebase)</h2>
+    </div>
+    <p>Web Scanner Pro uses the following <strong>Google Firebase</strong> services. Each service operates under Google's Privacy Policy and processes only anonymised, non-personal data:</p>
+
+    <div class="perm-list" style="margin-top:0.5rem;">
+      <div class="perm-item">
+        <div class="perm-icon">💥</div>
+        <div>
+          <h4>Firebase Crashlytics</h4>
+          <p>Collects anonymised crash reports including device model, Android version, and stack trace. No personally identifiable information is included. Used solely to identify and fix app crashes.</p>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">📊</div>
+        <div>
+          <h4>Firebase Analytics</h4>
+          <p>Collects anonymous usage events (feature usage, session duration). Data is aggregated and cannot be linked to any individual user. Used to understand app usage patterns and improve features.</p>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">⚙️</div>
+        <div>
+          <h4>Firebase Remote Config</h4>
+          <p>Used exclusively to fetch the latest app version number for in-app update notifications. No personal data is transmitted or stored via this service.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="firebase-card">
+      <p>All Firebase services are governed by Google's Privacy Policy. You can review it at: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a> and Firebase's data processing terms at <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a>.</p>
+    </div>
+  </div>
+
+  <!-- 5. PERMISSIONS -->
+  <div class="policy-section" id="s5">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <h2>App Permissions</h2>
+    </div>
+    <p>Web Scanner Pro requests only the permissions necessary for its core document scanning functionality. Here is exactly what each permission is used for:</p>
+
+    <div class="perm-list" style="margin-top:0.8rem;">
+      <div class="perm-item">
+        <div class="perm-icon">📷</div>
+        <div>
+          <h4>Camera</h4>
+          <p>Used exclusively for document scanning via the in-app camera. Document recognition runs entirely on-device using Google ML Kit. No images are captured without your direct action, and no images are uploaded to any server.</p>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">📁</div>
+        <div>
+          <h4>Storage / Files Access</h4>
+          <p>Used only to read files you explicitly select for import and to save PDF documents you create. The App accesses only files you directly choose — it does not browse or index your storage.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:1rem;">
+      <p>No other permissions are requested. The App will always ask for your explicit consent before accessing your camera or storage.</p>
+    </div>
+  </div>
+
+  <!-- 6. DATA STORAGE & SECURITY -->
+  <div class="policy-section" id="s6">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <h2>Data Storage &amp; Security</h2>
+    </div>
+    <p>All data generated by Web Scanner Pro is stored <strong>locally on your device only</strong>. There are no backend servers, user databases, or cloud storage involved in the App's core functionality.</p>
+
+    <ul class="check-list" style="margin-top:0.8rem;">
+      <li><strong>Scanned PDFs</strong> — saved to your device's local storage at the location you choose. Never uploaded to any server.</li>
+      <li><strong>Recent file history</strong> — stored in a local <strong>Room database</strong> on your device. This data never leaves your device.</li>
+      <li><strong>User preferences</strong> — theme selection, onboarding status, and other settings are stored locally using <strong>Android DataStore</strong>. Never synced or transmitted.</li>
+      <li><strong>No cloud backup</strong> — the App does not use Google Drive, iCloud, or any cloud backup service for your documents.</li>
+    </ul>
+
+    <p style="margin-top:1rem;">Since your files and data are stored only on your device, your security is primarily governed by your device's own security (screen lock, encryption). We recommend keeping your device updated and using a screen lock.</p>
+  </div>
+
+  <!-- 7. CHILDREN'S PRIVACY -->
+  <div class="policy-section" id="s7">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>Web Scanner Pro is not directed at children under the age of <strong>13</strong>. We do not knowingly collect any personal information from children.</p>
+    <p>Since the App does not collect personal data from any user, there is no risk of inadvertent collection of children's data. If you are a parent or guardian and have concerns, please contact us at the address below.</p>
+  </div>
+
+  <!-- 8. CHANGES -->
+  <div class="policy-section" id="s8">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <h2>Changes to This Policy</h2>
+    </div>
+    <p>We may update this Privacy Policy from time to time to reflect changes in the App or applicable law. When we do, we will update the <strong>Effective Date</strong> at the top of this page.</p>
+    <p>We encourage you to review this policy periodically. If you continue to use Web Scanner Pro after a policy update, you are agreeing to the revised terms. Significant changes will be communicated through an in-app notification where reasonably practicable.</p>
+  </div>
+
+  <!-- 9. CONTACT -->
+  <div class="policy-section" id="s9">
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <h2>Contact Us</h2>
+    </div>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or the App's data practices, please contact us:</p>
+    <a href="mailto:vivekg.520@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <span>vivekg.520@gmail.com</span>
+        <small>Vivek Gaikwad · Rise of Rebels · Pune, India</small>
+      </div>
+    </a>
+    <p style="margin-top:1rem;">We aim to respond to all privacy-related enquiries within <strong>7 business days</strong>.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>
+    <strong>Web Scanner Pro</strong> &mdash; Privacy Policy<br>
+    © 2025 Vivek Gaikwad / Rise of Rebels · Pune, India<br>
+    Effective Date: June 1, 2025 &nbsp;·&nbsp; <a href="mailto:vivekg.520@gmail.com">vivekg.520@gmail.com</a>
+  </p>
+</div>
+
+</body>
+</html>
